@@ -1,187 +1,154 @@
-package currency; import java.util.*;
-import java.text.DecimalFormat; Class CurrencyConvertor
+import java.io.*; import java.lang.*; import java.util.*; class Employee
 {
-double rupee,dollar,euro,yen;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertInrToEuro()
+String emp_name; int emp_id;
+String address; String mail_id; String mob_number;
+Employee(String emp_name, int emp_id, String address, String mail_id, String mob_number)
 {
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-euro = rupee / 80;
-System.out.println("Euro : "+f.format(euro));
+this. emp_name = emp_name; this.emp_id = emp_id; this.address = address; this.mob_number =mob_number;
 }
-public convertEuroToInr()
+void display()
 {
-System.out.println("Enter amount in Euro"); euro = sc.nextFloat();
-rupee = euro * 80;
-System.out.println("Rupees : "+f.format(rupee));
-}
-public convertInrToDollar()
-{
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-dollar = rupee / 66;
-System.out.println("Dollar : "+f.format(dollar));
-}
-public convertDollarToInr()
-{
-System.out.println("Enter amount in Dollar"); dollar = sc.nextFloat();
-rupee = dollar * 66;
-System.out.println("Rupees : "+f.format(rupee))
-}
-public convertInrToYen()
-{
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-yen = rupee / 0.61; System.out.println("Yen : "+f.format(yen));
-public convertYenToInr()
-{
-System.out.println("Enter amount in Yen"); euro = sc.nextFloat();
-rupee = yen * 0.61;
-System.out.println("Rupees : "+f.format(rupee));
-}
+System.out.println("Employee Name: "+ emp_name); System.out.println("Employee_ID: "+ emp_id); System.out.println("Address: "+ address);
+System.out.println("Mobile Number: "+ mob_number);
 }
 
-package distance; import java.util.*;
-import java.text.DecimalFormat; Class DistanceConvertor
-{
-double meter,km,miles;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertMeterToKm()
-{
-System.out.println("Enter the meter"); meter = sc.nextFloat();
-km =	meter * 0.001; System.out.println("Kilometer : "+f.format(km));
 }
-public convertKmToMeter()
+class Programmer extends Employee
 {
-System.out.println("Enter the Kilometer"); km = sc.nextFloat();
-meter = km / 0.001;
-System.out.println("Meter : "+f.format(meter));
+double basicpay,da,hra,pf,fund,netsalary,grosssalary;
+
+Programmer (String emp_name, int emp_id, String address, String mail_id, String mob_number,double bp)
+{
+super(emp_name, emp_id , address, mail_id, mob_number); basicpay = bp;
 }
-public convertMilesToKm()
+public void getPaySlip()
 {
-System.out.println("Enter the miles"); miles = sc.nextFloat();
-km = miles * 1.6093; System.out.println("Kilometer : "+f.format(km));
+da=basicpay * 97/100; hra=basicpay* 10/100; pf=basicpay* 12/100; fund= basicpay* 0.1/100;
+grosssalary=basicpay+da+hra+pf+fun 
+
+netsalary = grosssalary-pf-fund;
 }
-public convertKmToMiles()
+void disp()
 {
-System.out.println("Enter the Kilometer"); km = sc.nextFloat();
-miles = km / 1.6093; System.out.println("Miles : "+f.format(miles));
+System.out.println("Name of The Employee :"+ emp_name +"***** payslip ****"); display();
+System.out.println(" Grosssalary ="+ grosssalary); System.out.println(" Netsalary ="+ netsalary);
 }
 }
-package time; import java.util.*;
-import java.text.DecimalFormat; Class TimeConvertor
+class AssistantProfessor extends Employee
 {
-double hour,minute,second;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertHourToMinute()
+double basicpay,da,hra,pf,fund,netsalary,grosssalary;
+AssistantProfessor (String emp_name, int emp_id, String address, String mail_id, String mob_number,double bp)
 {
-System.out.println("Enter the Hour"); hour = sc.nextFloat();
-minute = hour * 60;
-System.out.println("Minutes : "+f.format(minute));
+super(emp_name, emp_id , address, mail_id, mob_number); basicpay = bp;
 }
-public convertMinuteToHour()
+public void getPaySlip()
 {
-System.out.println("Enter the Minute"); minute = sc.nextFloat();
-hour = minute / 60;
-System.out.println("Hours : "+f.format(hour));
+da=basicpay * 97/100; hra=basicpay* 10/100; pf=basicpay* 12/100; fund= basicpay* 0.1/100;
+grosssalary=basicpay+da+hra+pf+fund; netsalary = grosssalary-pf-fund;
 }
-public convertHourToSeconds()
+void disp()
 {
-System.out.println("Enter the Hour"); hour = sc.nextFloat();
-second = hour * 3600; System.out.println("Seconds : "+f.format(second));
+System.out.println("Name of The Employee :"+ emp_name +"***** payslip ****"); display();
+System.out.println(" Grosssalary ="+ grosssalary); System.out.println(" Netsalary ="+ netsalary);
 }
-public convertSecondsToHour()
+}
+class AssociateProfessor extends Employee
 {
-System.out.println("Enter the Seconds"); second = sc.nextFloat();
-hour = second / 3600; System.out.println("Hours : "+f.format(hour));
+double basicpay,da,hra,pf,fund,netsalary,grosssalary;
+AssociateProfessor (String emp_name, int emp_id, String address, String mail_id, String mob_number,double bp)
+{
+super(emp_name, emp_id , address, mail_id, mob_number); basicpay = bp;
 }
+public void getPaySlip()
+{
+da=basicpay * 97/100; hra=basicpay* 10/100; pf=basicpay* 12/100; fund= basicpay* 0.1/100;
+grosssalary=basicpay+da+hra+pf+fund; netsalary = grosssalary-pf-fund;
 }
 
-import currency.*; import distance.*; import time.*;\
-import java.util.Scanner; public class Convertor
+void disp()
 {
-public static void main (String[] args)
-{
-int code,currency_code,distance_code,time_code;
-Scanner sc = new Scanner(System.in);
-System.out.println("Enter the code 1:Currency\n2:Distance\n3:Time"); code=sc.nextInt();
-if(code==1)
-{
-System.out.println("Enter the Currecy code 1:Euro\n2:Dollar\n3:Yen"); currency_code=sc.nextInt();
-if(currency_code == 1)
-{
-convertInrToEuro();
-convertEuroToInr()
-}
-else if(currency_code == 2)
-{
-convertInrToDollar(); convertDollarToInr();
-}
-else if(currency_code == 3)
-{
-
-
-
-}
-else
-{
-
+System.out.println("Name of The Employee :"+ emp_name +"***** payslip ****"); display();
+System.out.println(" Grosssalary ="+ grosssalary); System.out.println(" Netsalary ="+ netsalary);
 }
 }
-
-convertInrToYen(); convertYenToInr();
-
-
-System.out.println(“Invalid Code”);
-
-else if(code==2)
+class Professor extends Employee
 {
-System.out.println("Enter the Distance code 1:Meter\n2:Miles"); distance_code=sc.nextInt();
-if(distance_code == 1)
+double basicpay,da,hra,pf,fund,netsalary,grosssalary;
+Professor (String emp_name, int emp_id, String address, String mail_id, String mob_number,double bp)
 {
-convertMeterToKm();
-convertKmToMeter();
+super(emp_name, emp_id , address, mail_id, mob_number); basicpay = bp;
 }
-else if(distance_code == 2)
+public void getPaySlip()
 {
-
-
+da=basicpay * 97/100; hra=basicpay* 10/100; pf=basicpay* 12/100; fund= basicpay* 0.1/100;
+grosssalary=basicpay+da+hra+pf+fund; netsalary = grosssalary-pf-fund;
 }
-else
+void disp()
 {
-
-convertMilesToKm(); convertKmToMiles();
-
-System.out.println(“Invalid Code”);
+System.out.println("Name of The Employee :"+ emp_name +"***** payslip ****"); display();
+System.out.println("Grosssalary ="+ grosssalary); System.out.println("Netsalary ="+ netsalary);
 }
 }
-else if(code==3)
+public class EmployeePayslip
 {
-System.out.println("Enter the Time code 1:Minutes\n2:Seconds"); time_code=sc.nextInt();
-if(time_code == 1)
+public static void main(String arg[])throws IOExcep
 {
-convertHourToMinute();
-convertMinuteToHour();
-}
-else if(time_code == 2)
+String name,add,mail,mob; int id,desg;
+double bp;
+DataInputStream in = new DataInputStream(System.in); System.out.println("Enter Name of Employee :"); name=in.readLine();
+System.out.println("Enter ID of Employee :"); id= Integer.valueOf(in.readLine());
+System.out.println("Enter Address of Employee :"); add=in.readLine();
+System.out.println("Enter Mail ID of Employee :"); mail=in.readLine();
+System.out.println("Enter Mobile Number of Employee :"); mob=in.readLine();
+System.out.println("Enter the Basicpay :"); bp=Double.valueOf(in.readLine()); System.out.println("Enter the Designation :");
+System.out.println("1. Programmer\n2. AssistantProfessor\n 3.
+AssociateProfessor\n4.Professor \n5. Exit"); desg= Integer.valueOf(in.readLine());
+switch (desg)
 {
-}
-else
-{
-
-convertHourToSeconds(); convertSecondsToHour();
-
-System.out.println(“Invalid Code”);
-}
-}
-else
-{
-System.out.println(“Invalid Code”);
+case 1: Programmer p=new Programmer (name,id,add,mail,mob,bp);
+p. getPaySlip (); p.disp();
+break;
+case 2: AssistantProfessor ap=new AssistantProfessor(name,id,add,mail,mob,bp); ap. getPaySlip ();
+ap.disp(); break;
+case 3: AssociateProfessor assp=new AssociateProfessor(name,id,add,mail,mob,bp); assp. getPaySlip ();
+assp.disp();
+break;
+case 4: Professor pf=new Professor (name,id,add,mail,mob,bp); pf. getPaySlip ();
+pf.disp();
+break;
+case 5: System.exit(0);
+default: System.out.println("Invalid designation");
 }
 }
 }
-
 OUTPUT:
-Enter the code 1:Currency\n2:Distance\n3:Time 1
-Enter the Currecy code 1:Euro\n2:Dollar\n3:Yen 2
-Enter amount in rupees 6600
-Dollar : 100
-Enter amount in Dollar 6
-Rupees : 396
+
+D:\ Java Programs>java EmployeePayslip Enter Name of Employee :
+Raj
+Enter ID of Employee :
+327
+Enter Address of Employee :
+Villupuram
+Enter Mail ID of Employee :
+raj@gmail.com
+Enter Mobile Number of Employee :
+9994191599
+Enter the Basicpay :
+15000
+Enter the Designation :
+1.	Programmer
+2.	AssistantProfessor
+3.	AssociateProfessor
+4.	Professor
+5.	Exit
+
+2
+Name of The Employee :Raghu***** payslip **** Employee Name: Raghu
+Employee_ID: 327 Address: Villupuram
+Mobile Number: 9994191599
+Grosssalary =32865.0
+Netsalary =31050.0
+
+
 
 
