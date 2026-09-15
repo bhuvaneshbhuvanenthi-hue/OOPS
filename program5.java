@@ -1,180 +1,97 @@
-package currency; import java.util.*;
-import java.text.DecimalFormat; Class CurrencyConvertor
+import java.io.*; interface Mystack
 {
-double rupee,dollar,euro,yen;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertInrToEuro()
-{
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-euro = rupee / 80;
-System.out.println("Euro : "+f.format(euro));
+public void pop(); public void push(); public void display();
 }
-public convertEuroToInr()
+class Stack_array implements Mystack
 {
-System.out.println("Enter amount in Euro"); euro = sc.nextFloat();
-rupee = euro * 80;
-System.out.println("Rupees : "+f.format(rupee));
-}
-public convertInrToDollar()
+final static int n=5;
+int stack[]=new int[n]; int top=-1;
+public void push()
 {
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-dollar = rupee / 66;
-System.out.println("Dollar : "+f.format(dollar));
-}
-public convertDollarToInr()
+try
 {
-System.out.println("Enter amount in Dollar"); dollar = sc.nextFloat();
-rupee = dollar * 66;
-System.out.println("Rupees : "+f.format(rupee))
-}
-public convertInrToYen()
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in)); if(top==(n-1))
 {
-System.out.println("Enter amount in rupees"); rupee = sc.nextFloat();
-yen = rupee / 0.61; System.out.println("Yen : "+f.format(yen));
-public convertYenToInr()
-{
-System.out.println("Enter amount in Yen"); euro = sc.nextFloat();
-rupee = yen * 0.61;
-System.out.println("Rupees : "+f.format(rupee));
-}
-}
-
-package distance; import java.util.*;
-import java.text.DecimalFormat; Class DistanceConvertor
-{
-double meter,km,miles;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertMeterToKm()
-{
-System.out.println("Enter the meter"); meter = sc.nextFloat();
-km =	meter * 0.001; System.out.println("Kilometer : "+f.format(km));
-}
-public convertKmToMeter()
-{
-System.out.println("Enter the Kilometer"); km = sc.nextFloat();
-meter = km / 0.001;
-System.out.println("Meter : "+f.format(meter));
-}
-public convertMilesToKm()
-{
-System.out.println("Enter the miles"); miles = sc.nextFloat();
-km = miles * 1.6093; System.out.println("Kilometer : "+f.format(km));
-}
-public convertKmToMiles()
-{
-System.out.println("Enter the Kilometer"); km = sc.nextFloat();
-miles = km / 1.6093; System.out.println("Miles : "+f.format(miles));
-}
-}
-package time; import java.util.*;
-import java.text.DecimalFormat; Class TimeConvertor
-{
-double hour,minute,second;
-Scanner sc = new Scanner(System.in); DecimalFormat f = new DecimalFormat("##.###"); public convertHourToMinute()
-{
-System.out.println("Enter the Hour"); hour = sc.nextFloat();
-minute = hour * 60;
-System.out.println("Minutes : "+f.format(minute));
-}
-public convertMinuteToHour()
-{
-System.out.println("Enter the Minute"); minute = sc.nextFloat();
-hour = minute / 60;
-System.out.println("Hours : "+f.format(hour));
-}
-public convertHourToSeconds()
-{
-System.out.println("Enter the Hour"); hour = sc.nextFloat();
-second = hour * 3600; System.out.println("Seconds : "+f.format(second));
-}
-public convertSecondsToHour()
-{
-System.out.println("Enter the Seconds"); second = sc.nextFloat();
-hour = second / 3600; System.out.println("Hours : "+f.format(hour));
-}
-}
-
-import currency.*; import distance.*; import time.*;\
-import java.util.Scanner; public class Convertor
-{
-public static void main (String[] args)
-{
-int code,currency_code,distance_code,time_code;
-Scanner sc = new Scanner(System.in);
-System.out.println("Enter the code 1:Currency\n2:Distance\n3:Time"); code=sc.nextInt();
-if(code==1)
-{
-System.out.println("Enter the Currecy code 1:Euro\n2:Dollar\n3:Yen"); currency_code=sc.nextInt();
-if(currency_code == 1)
-{
-convertInrToEuro();
-convertEuroToInr()
-}
-else if(currency_code == 2)
-{
-convertInrToDollar(); convertDollarToInr();
-}
-else if(currency_code == 3)
-{
+System.out.println(" Stack Overflow"); return;
 }
 else
 {
-
+System.out.println("Enter the element"); int ele=Integer.parseInt(br.readLine()); stack[++top]=ele;
 }
 }
-
-convertInrToYen(); convertYenToInr();
-System.out.println(“Invalid Code”);
-
-else if(code==2)
+catch(IOException e)
 {
-System.out.println("Enter the Distance code 1:Meter\n2:Miles"); distance_code=sc.nextInt();
-if(distance_code == 1)
-{
-convertMeterToKm();
-convertKmToMeter();
+System.out.println("e");
 }
-else if(distance_code == 2)
+}
+public void pop()
 {
+if(top<0)
+{
+System.out.println("Stack underflow"); return;
 }
 else
 {
+int popper=stack[top]; top--;
+System.out.println("Popped element:" +popper);
+}
+}
 
-convertMilesToKm(); convertKmToMiles();
-
-System.out.println(“Invalid Code”);
-}
-}
-else if(code==3)
+public void display()
 {
-System.out.println("Enter the Time code 1:Minutes\n2:Seconds"); time_code=sc.nextInt();
-if(time_code == 1)
+if(top<0
 {
-convertHourToMinute();
-convertMinuteToHour();
-}
-else if(time_code == 2)
-{
+System.out.println("Stack is empty"); return;
 }
 else
 {
-
-convertHourToSeconds(); convertSecondsToHour();
-
-System.out.println(“Invalid Code”);
+String str=" ";
+for(int i=0; i<=top; i++) str=str+" "+stack[i]+" <--";
+System.out.println("Elements are:"+str);
 }
 }
-else
+}
+
+class StackADT
 {
-System.out.println(“Invalid Code”);
+public static void main(String arg[])throws IOException
+{
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in)); System.out.println("Implementation of Stack using Array");
+Stack_array stk=new Stack_array(); int ch=0;
+do
+{
+System.out.println("1.Push 2.Pop 3.Display 4.Exit); System.out.println("Enter your choice:"); ch=Integer.parseInt(br.readLine());
+switch(ch)
+{
+case 1:
+stk.push(); break;
+case 2:
+stk.pop(); break;
+case 3:
+stk.display(); break;
+case 4:
+System.exit(0);
 }
+}
+while(ch<5);
 }
 }
 
-OUTPUT:
-Enter the code 1:Currency\n2:Distance\n3:Time 1
-Enter the Currecy code 1:Euro\n2:Dollar\n3:Yen 2
-Enter amount in rupees 6600
-Dollar : 100
-Enter amount in Dollar 6
-Rupees : 396
+Output
+Implementation of Stack using Array 1.Push 2.Pop 3.Display 4.Exit
+Enter your choice:
+1
+Enter the element 10
+1.Push 2.Pop 3.Display 4.Exit Enter your choice:
+1
+Enter the element 15
+1.Push 2.Pop 3.Display 4.Exit Enter your choice:
+1
+Enter the element 25
+1.	Push 2.Pop 3.Display 4.Exit 5.Use Linked List Enter your choice:
+3
+Elements are: 10 <-- 15 <-- 25 <-- 1.Push 2.Pop 3.Display 4.Exit
+2
+Popped element: 25
 
 
